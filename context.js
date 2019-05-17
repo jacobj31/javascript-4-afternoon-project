@@ -15,18 +15,26 @@
   Create an object called user which has the following properties.
   username --> which is a string
   email --> which is a string
-  getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
+  getUsername --> which is a function that returns the current object's username property. 
+  *Don't use 'user' instead use the 'this' keyword*
 */
   
 
-//Code Here
+const user = {
+  username: 'sweetsteven',
+  email: 'supersweetsteve@gmail.com',
+  getUsername () {return this.username}
+
+}
 
 
 
 ////////// PROBLEM 2 //////////
 
 /*
- Below we have the class Animal.  The eat method is using the "this" keyword.  Use the "new" keyword to assign context to "this", and save the instance to a variable named animal1.  You can pass anything you want in for name, species and food.
+ Below we have the class Animal.  The eat method is using the "this" keyword.  
+ Use the "new" keyword to assign context to "this", and save the instance to a variable named 
+ animal1.  You can pass anything you want in for name, species and food.
 */
 
 class Animal {
@@ -41,14 +49,16 @@ class Animal {
   }
 }
 
-//Code Here
+let animal1 = new Animal('Arthur', 'Aardvark', 'Ants')
+
 
 
 
 ////////// PROBLEM 3 //////////
 
 /*
-  Use the bind method to assign context of the "this" keyword in the sayHi function to the user object; and save the bound function to a variable named whoSaysHi.  
+  Use the bind method to assign context of the "this" keyword in the sayHi function to the user 
+  object; and save the bound function to a variable named whoSaysHi.  
 */
 
 function sayHi(greeting) {
@@ -61,14 +71,13 @@ let who = {
   location: 'Belize'
 }
 
-//Code Here
-
-
+let whoSaysHi = sayHi.bind(who)
 
 ////////// PROBLEM 4 //////////
 
 /*
-  here we have a function that just returns the "this" keyword.  We will give context to "this", and your job is to tell us what the context is.
+  here we have a function that just returns the "this" keyword.  
+  We will give context to "this", and your job is to tell us what the context is.
 */
 
 function whatIsThis() {
@@ -76,7 +85,7 @@ function whatIsThis() {
 }
 
 // uncomment the line below and tell us what the context of "this" is for whatIsThis()
-//let context1 = ???
+let context1 = window
 
 let product = {
   name: 'snake plant',
@@ -87,7 +96,7 @@ let product = {
 let func = whatIsThis.bind(product)
 
 // uncomment the line below and tell us what the context of "this" is when we invoke func
-//let context2 = ???
+let context2 = product
 
 let vacation = {
   location: 'Hawaii',
@@ -98,7 +107,7 @@ let vacation = {
 }
 
 // uncomment the line below and tell us what the context of "this" is when we invoke vacation.whatIsThis
-//let context3 = ???
+let context3 = vacation
 
 
 class Family {
@@ -115,5 +124,6 @@ class Family {
 
 let family1 = new Family(2, 4, 1)
 
-// uncomment the line below and tell us what the context of "this" is for the instance of Family created above.
-//let context4 = ???
+// uncomment the line below and tell us what the context of "this" is for the 
+//instance of Family created above.
+let context4 = family1
