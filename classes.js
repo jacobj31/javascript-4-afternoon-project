@@ -29,7 +29,18 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(name, last, email, age){
+    this.first_name = name;
+    this.last_name = last;
+    this.email = email;
+    this.age = age;
+  }
+
+  makeWidget(){
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -47,14 +58,27 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee {
+  constructor(name, last, email, age){
+    super(name, last, email, age);
+    this.reports = [];
+  }
+  hire(employee){
+    this.reports.push(employee)
+  }
+  fire(index){
+    this.reports.splice(index, 1)
+  }
+}
 
 
 ////////// PROBLEM 3 //////////
 
 /*
-  Managers for Widget Co. get promoted when they get more employees, and get a bonus when they fire employees.
-  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the same properties as a manager with the following additional properties:
+  Managers for Widget Co. get promoted when they get more employees, and get a bonus 
+  when they fire employees.
+  create a class ProgressiveManager that extends Manager.  A Progressive Manager has all of the 
+  same properties as a manager with the following additional properties:
     - title - default 'Not a manager'
     - bonus - default 0
 
@@ -71,7 +95,54 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager extends Manager{
+  constructor(name, last, email, age){
+    super(name, last, email, age, []);
+    
+    this.title = 'Not a manager';
+    this.bonus = 0;
+  }
+  fire(){
+    super.fire()
+    this.bonus += 100;
+    const len = this.reports.length;
+    if (len === 0){
+      this.title = 'Not a manager'
+    } else if (len >= 1 && len <=3){
+      this.title = 'Barely Manager'
+    } else if (len >= 4 && len <= 10){
+      this.title = 'Mostly Manager'
+    } else if (len >= 11 && len <= 50){
+      this.title = 'Manager' 
+    } else if (len >= 51 && len <= 100){
+      this.title = 'Manager Plus'
+    } else if (len >= 101){
+      this.title = 'Bestest Manager'
+    }
+  }
+    
+  
+  hire(){
+    super.hire()
+    const len = this.reports.length;
+    if (len === 0){
+      this.title = 'Not a manager'
+    } else if (len >= 1 && len <=3){
+      this.title = 'Barely Manager'
+    } else if (len >= 4 && len <= 10){
+      this.title = 'Mostly Manager'
+    } else if (len >= 11 && len <= 50){
+      this.title = 'Manager' 
+    } else if (len >= 51 && len <= 100){
+      this.title = 'Manager Plus'
+    } else if (len >= 101){
+      this.title = 'Bestest Manager'
+    }
+
+
+  }
+
+}
 
 
 
